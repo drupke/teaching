@@ -721,10 +721,10 @@ def StatStar(Msolar,Lsolar,Te,X,Z):
       f.write('# Mtot = {0:13.6E} Msun          Mc/Mtot     = {1:12.5E}\n'.format(Msolar,Mcrat))
       f.write('# Rtot = {0:13.6E} Rsun          Rc/Rtot     = {1:12.5E}\n'.format(Rsolar,Rcrat))
       f.write('# Ltot = {0:13.6E} Lsun          Lc/Ltot     = {1:12.5E}\n'.format(Lsolar,Lcrat))
-      f.write('# Teff = {0:13.6E} K             Density     = {1:12.5E}\n'.format(Te,rhocor))
-      f.write('# X    = {0:13.6E}               Temperature = {1:12.5E}\n'.format(X,Tcore))
-      f.write('# Y    = {0:13.6E}               Pressure    = {1:12.5E} dynes/cm**2\n'.format(Y,Pcore))
-      f.write('# Z    = {0:13.6E}               epsilon     = {1:12.5E} ergs/s/g\n'.format(Z,epscor))
+      f.write('# Teff = {0:13.6E} K             Density     = {1:12.5E} kg/m**3\n'.format(Te,rhocor*1.e3))
+      f.write('# X    = {0:13.6E}               Temperature = {1:12.5E} K\n'.format(X,Tcore))
+      f.write('# Y    = {0:13.6E}               Pressure    = {1:12.5E} Pa\n'.format(Y,Pcore/10.))
+      f.write('# Z    = {0:13.6E}               epsilon     = {1:12.5E} W/kg\n'.format(Z,epscor/1.e4))
       f.write('#                                    dlnP/dlnT   = {0:12.5E}\n'.format(dlPdlT[istop]))
 
       f.write('# Notes:\n')
@@ -757,7 +757,7 @@ def StatStar(Msolar,Lsolar,Te,X,Z):
               clim = '*'
           else:
               clim = ' '
-          s='{0:7.2E} {1:7.2E} {2:7.2E} {3:7.2E} {4:7.2E} {5:7.2E} {6:7.2E} {7:6.2E}{8:1s}{9:1s} {10:5.1f}\n'.format(r[i], Qm, L_r[i], T[i], P[i], rho[i], kappa[i],epslon[i], clim, rcf, dlPdlT[i])
+          s='{0:7.2E} {1:7.2E} {2:7.2E} {3:7.2E} {4:7.2E} {5:7.2E} {6:7.2E} {7:6.2E}{8:1s}{9:1s} {10:5.1f}\n'.format(r[i]/1.e2, Qm, L_r[i]/1.e7, T[i], P[i]/10., rho[i]*1.e3, kappa[i]/10.,epslon[i]/1.e4, clim, rcf, dlPdlT[i])
           f.write(s)
 
 #     Output to screen
