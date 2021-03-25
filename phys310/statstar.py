@@ -9,6 +9,8 @@ import numpy as np
 #  by Prof. D. Schiminovich at Columbia University 
 #  for use in C3101 Stellar Structure and Evolution
 #
+#  Modifications from DSNR, 2021 March, so that outputs are in SI units.
+#
 #  Notes from FORTRAN code:
 #
 #  This program is listed in Appendix H of both "An Introduction
